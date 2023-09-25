@@ -6,18 +6,45 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        return -number
+    else:
+        return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    noms = []
+    for letter in prefixes:
+        noms.append(letter + suffixe)
+    return noms
 
-    return [""]
-
+def nb_premier(nb):
+    for i in range(nb-1, 0, -1):
+        if nb % i == 0:
+            break
+    if i == 1:
+        return True
+    else:
+        return False
+    
+def generateur_nb_premier():
+    n = 2
+    while True:
+        if nb_premier(n):
+            yield n
+        n+=1
 
 def prime_integer_summation() -> int:
-    return 0
-
+    N = 100
+    S= 0
+    i =1 
+    for Nbprem in generateur_nb_premier():
+        S += Nbprem
+        i += 1
+        if i > N:
+            break
+    return S
 
 def factorial(number: int) -> int:
     return 0
